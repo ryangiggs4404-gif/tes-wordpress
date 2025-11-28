@@ -40,3 +40,7 @@ Saya membuat custom shortcode bernama [simple_event_count]. Logic-nya sederhana:
 
 4. Tampilan (Frontend)
 Layout dibuat menggunakan CSS Flexbox agar card berjejer rapi (grid) dan tetap responsif saat dibuka di layar kecil.
+
+
+## Link Video
+https://www.loom.com/share/3822e2d3e9c74a6bad518af45c0e3820
