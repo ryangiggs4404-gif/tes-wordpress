@@ -1,37 +1,42 @@
-# Technical Test WordPress Developer - Talenavi
+Technical Test WordPress Developer - Talenavi
 
-Repository ini dibuat untuk pengumpulan tes teknis posisi WordPress Developer Internship. Project ini dikerjakan dengan memodifikasi tema bawaan Twenty Twenty-Five.
+Repository ini berisi source code hasil pengerjaan tes teknis untuk posisi WordPress Developer Internship. Project ini dikerjakan dengan memodifikasi tema bawaan Twenty Twenty-Five.
 
-## Fitur Implementasi
-Berikut adalah fitur-fitur yang sudah saya kerjakan sesuai instruksi:
+Cara Install
+Karena project ini berupa modifikasi tema, tidak perlu instalasi plugin tambahan. Berikut langkah-langkahnya:
 
-1. Custom Page Template: Membuat template khusus untuk halaman event (file: page-event-test.php).
-2. Data Dummy: Menggunakan array PHP yang ditaruh di functions.php (hardcode).
-3. Fitur Sorting: Logic pengurutan harga (termurah/termahal) menggunakan PHP Native di sisi server.
-4. Shortcode: Membuat shortcode [simple_event_count] untuk menampilkan jumlah total event.
-5. Layout Responsif: Tampilan menggunakan CSS Flexbox agar rapi berupa grid card.
+1. Pastikan sudah ada instalasi WordPress di Localhost (XAMPP/Laragon).
+2. Pastikan tema yang aktif adalah Twenty Twenty-Five.
+3. Download file functions.php dan page-event-test.php dari repository ini.
+4. Copy kedua file tersebut.
+5. Paste (timpa file lama jika diminta) ke dalam folder tema di komputer Anda. Lokasinya biasanya ada di:
+   xampp/htdocs/nama-folder-wp/wp-content/themes/twentytwentyfive/
 
-## Cara Install dan Menjalankan
+Cara Menjalankan
+Setelah file terpasang, lakukan setup di Dashboard WordPress:
 
-Karena project ini berupa modifikasi tema, berikut langkah-langkah setup di Localhost:
+1. Login ke wp-admin.
+2. Masuk ke menu Pages (Laman) > Add New Page.
+3. Beri judul halaman, misalnya "Tes Event".
+4. Di sidebar sebelah kanan (bagian Page Attributes/Template), ganti Template dari Default menjadi Event Page.
+5. Klik Publish.
+6. Klik View Page untuk melihat hasilnya.
+7. Coba fitur dropdown sorting untuk menguji fungsi pengurutan harga.
 
-1. Persiapan WordPress
-Pastikan sudah install WordPress di XAMPP/Localhost dan tema yang aktif adalah Twenty Twenty-Five.
+Penjelasan Singkat Logic
+Berikut adalah alur logika dari kode yang saya buat:
 
-2. Pemasangan File
-- Download file dari repository ini.
-- Copy file page-event-test.php dan functions.php.
-- Paste (timpa) file tersebut ke dalam folder tema di komputer: wp-content/themes/twentytwentyfive/
+1. Data Dummy
+Saya tidak menyimpan data di database, melainkan menggunakan Array PHP yang disimpan dalam fungsi ambil_data_event() di file functions.php. Ini agar data terpusat dan mudah dipanggil.
 
-3. Pengaturan Halaman
-- Login ke Dashboard WordPress (/wp-admin).
-- Buat Halaman Baru (Pages > Add New).
-- Beri judul halaman, misalnya "Tes Event".
-- Lihat sidebar sebelah kanan, cari bagian Page Attributes/Template.
-- Ubah Template menjadi Event Page.
-- Klik Publish dan lihat hasilnya (View Page).
+2. Fitur Sorting (Server Side)
+Sesuai instruksi, sorting dilakukan menggunakan PHP, bukan JavaScript.
+- Logic ada di file page-event-test.php.
+- Saya menggunakan parameter URL ($_GET) untuk menangkap pilihan user.
+- Jika user memilih 'murah' atau 'mahal', kode akan menjalankan fungsi usort() bawaan PHP untuk mengurutkan array harga dari kecil ke besar atau sebaliknya.
 
-## Tech Stack
-- WordPress 6.8.3
-- PHP Native
-- HTML5 & CSS3
+3. Shortcode
+Saya membuat custom shortcode bernama [simple_event_count]. Logic-nya sederhana: fungsi ini memanggil data array tadi, menghitung jumlah datanya menggunakan count(), lalu mengembalikannya dalam bentuk teks HTML tebal.
+
+4. Tampilan (Frontend)
+Layout dibuat menggunakan CSS Flexbox agar card berjejer rapi (grid) dan tetap responsif saat dibuka di layar kecil.
